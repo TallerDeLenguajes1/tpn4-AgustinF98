@@ -21,6 +21,7 @@ int main(){
 
     printf("Ingrese la cantidad de tareas a cargar: ");
     scanf("%d", &cantTareas);
+    getchar();
     fflush(stdin);
 
     Tarea **TareasPendientes;
@@ -48,7 +49,7 @@ void CargarTareas(Tarea **TareasPendientes, int cantTareas){
         TareasPendientes[i]->TareaID = i + 1;
         TareasPendientes[i]->Duracion = rand()%91 + 10;
 
-        printf("Ingrese la descripcion de la tarea %d: ", i+1);
+        printf("Ingrese la descripcion de la tarea %d: ", TareasPendientes[i]->TareaID);
         gets(descTarea);
         fflush(stdin);
 
@@ -103,9 +104,12 @@ void MostrarTareas(Tarea **TareasPendientes, Tarea **TareasRealizadas, int cantT
 
     for ( i = 0; i < cantTareas; i++)
     {
-        printf("ID de la tarea: %d\n", TareasRealizadas[i]->TareaID);
-        printf("Descripcion: %s\n", TareasRealizadas[i]->Descripcion);
-        printf("Duracion: %d\n", TareasRealizadas[i]->Duracion);
-        printf("\n");
+        if (TareasRealizadas[i] != NULL)
+        {
+            printf("ID de la tarea: %d\n", TareasRealizadas[i]->TareaID);
+            printf("Descripcion: %s\n", TareasRealizadas[i]->Descripcion);
+            printf("Duracion: %d\n", TareasRealizadas[i]->Duracion);
+            printf("\n");
+        }
     }
 }
